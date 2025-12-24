@@ -1,11 +1,6 @@
 #include <assert.h>
 #include <stdio.h>
 
-/*
- * @precondition  n > 0
- * @postcondition Returns:
- *   1 + 2 + 3 + ... + n = n(n + 1) / 2
- */
 int sum_of_n(int n)
 {
     assert(n > 0);
@@ -14,14 +9,14 @@ int sum_of_n(int n)
 
 int main(void)
 {
-    const int max = 999;
+    int max;
+    if (scanf("%d", &max) != 1) return 1;
 
-    int sum_3 = 3 * sum_of_n(max / 3);
-    int sum_5 = 5 * sum_of_n(max / 5);
-    int sum_15 = 15 * sum_of_n(max / 15);
+    int limit = max - 1;
+    int sum3  = 3  * sum_of_n(limit / 3);
+    int sum5  = 5  * sum_of_n(limit / 5);
+    int sum15 = 15 * sum_of_n(limit / 15);
 
-    int result = sum_3 + sum_5 - sum_15;
-    printf("%d\n", result);
-
+    printf("%d\n", sum3 + sum5 - sum15);
     return 0;
 }
