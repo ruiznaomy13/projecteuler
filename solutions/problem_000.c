@@ -1,5 +1,5 @@
-#include <stdio.h>
 #include <assert.h>
+#include <stdio.h>
 
 /*
  * @precondition  n > 0
@@ -22,4 +22,3 @@ int main(void)
 
     return 0;
 }
-
