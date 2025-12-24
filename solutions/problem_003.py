@@ -39,44 +39,27 @@ def solve(n=600851475143):
     return largest
 
 
-def is_prime(n):
-    """Check if a number is prime."""
-    if n < 2:
-        return False
-    if n == 2:
-        return True
-    if n % 2 == 0:
-        return False
-    
-    for i in range(3, int(n**0.5) + 1, 2):
-        if n % i == 0:
-            return False
-    return True
-
-
 def get_prime_factors(n):
     """Get all prime factors of a number."""
-    factors = []
+    factors = set()
     
     # Divide by 2 until n is odd
     while n % 2 == 0:
-        if 2 not in factors:
-            factors.append(2)
+        factors.add(2)
         n //= 2
     
     # Check odd factors
     factor = 3
     while factor * factor <= n:
         while n % factor == 0:
-            if factor not in factors:
-                factors.append(factor)
+            factors.add(factor)
             n //= factor
         factor += 2
     
     if n > 1:
-        factors.append(n)
+        factors.add(n)
     
-    return factors
+    return sorted(factors)
 
 
 if __name__ == "__main__":
