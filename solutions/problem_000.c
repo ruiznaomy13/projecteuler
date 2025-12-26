@@ -10,8 +10,7 @@ long sum_of_odd_squares(long n)
 
 int main(void)
 {
-    long limit;
-    if (scanf("%ld", &limit) != 1) return 1;
+    const long limit = 531000;
 
     long n = limit / 2;
     printf("%ld\n", sum_of_odd_squares(n));

@@ -1,26 +1,23 @@
-CC      = cc
-CFLAGS  = -DNDEBUG -Wall -Wextra -Werror
+CC	= cc
+CFLAGS	= -DNDEBUG -Wall -Wextra -Werror
 
-SRC_DIR = solutions
-TEST_DIR= tests
+srcdir	:= solutions
+srcs	:= $(wildcard $(srcdir)/problem_*.c)
+bins	:= $(notdir $(srcs:.c=))
 
-SRCS    = $(wildcard $(SRC_DIR)/problem_*.c)
-BINS    = $(notdir $(SRCS:.c=))
+all: $(bins)
 
-.PHONY: all format clean fclean re
-
-all: $(BINS)
+$(bins): %: $(srcdir)/%.c
+	$(CC) $(CFLAGS) $< -o $@
 
 format:
-	clang-format -i $(SRCS)
-
-$(BINS): %: $(SRC_DIR)/%.c
-	$(CC) $(CFLAGS) $< -o $@ && echo -n "$@: " && ./$@ < $(TEST_DIR)/$*.in
+	clang-format -i $(srcs)
 
 clean:
-	rm -f $(BINS)
+	rm -f $(bins)
 
 fclean: clean
 
 re: fclean all
 
+.PHONY: all format clean fclean re

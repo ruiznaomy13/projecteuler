@@ -9,12 +9,11 @@ int sum_of_n(int n)
 
 int main(void)
 {
-    int max;
-    if (scanf("%d", &max) != 1) return 1;
+    const int max = 1000;
 
     int limit = max - 1;
-    int sum3  = 3  * sum_of_n(limit / 3);
-    int sum5  = 5  * sum_of_n(limit / 5);
+    int sum3 = 3 * sum_of_n(limit / 3);
+    int sum5 = 5 * sum_of_n(limit / 5);
     int sum15 = 15 * sum_of_n(limit / 15);
 
     printf("%d\n", sum3 + sum5 - sum15);
